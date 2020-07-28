@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-button slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-button>
+        <ion-title>user-list</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="getMoreUsers($event, 'prepend')" slot="fixed">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+                               refreshingText="Refreshing..."></ion-refresher-content>
+    </ion-refresher>
+
+    <div>
+        <ion-item>
+            <ion-label>Je suis interessé par...</ion-label>
+            <ion-select [(ngModel)]="search.gender">
+                <ion-select-option value="female">Femmes</ion-select-option>
+                <ion-select-option value="male">Hommes</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Vivant dans le(s) pays suivant(s)</ion-label>
+            <ion-select [(ngModel)]="search.nationality" multiple="true">
+                <ion-select-option value="AU">Autriche</ion-select-option>
+                <ion-select-option value="FR">France</ion-select-option>
+                <ion-select-option value="GB">Grande-Bretagne</ion-select-option>
+                <ion-select-option value="IE">Irelande</ion-select-option>
+                <ion-select-option value="NL">Hollande</ion-select-option>
+                <ion-select-option value="US">Murica, fuck yeah</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-button expand="block" (click)="getUserList()">Valider</ion-button>
+    </div>
+
+    <ion-list>
+        <ion-item *ngFor="let user of userList" routerLink="/user-details/{{ user.id }}">
+            <ion-avatar slot="start">
+                <ion-img [src]="user.picture"></ion-img>
+            </ion-avatar>
+            <ion-label>
+                <h3>{{user.fullName}}</h3>
+                <p>{{user.address}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="getMoreUsers($event, 'append')">
+        <ion-infinite-scroll-content
+                loading-text="Chargement"
+                loading-spinner="bubbles"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>user-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header><h4>{{ user.fullName }}</h4></ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="user.picture"></ion-img>
+      <p> Adresse : {{ user.address }} {{ user.postalCode }} {{ user.city }}</p>
+      <p> Pays : {{ user.country}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
