@@ -11,12 +11,15 @@ import {PersonComponent} from '../../components/person/person.component';
 import {StarComponent} from '../../components/star/star.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SettingsPageRoutingModule
-  ],
-  declarations: [SettingsPage, PersonComponent, StarComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        SettingsPageRoutingModule
+    ],
+    exports: [
+        StarComponent
+    ],
+    declarations: [SettingsPage, PersonComponent, StarComponent]
 })
 export class SettingsPageModule {}

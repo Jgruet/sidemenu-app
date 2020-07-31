@@ -1,2 +1,2 @@
-<ion-icon *ngFor="let v of values" name="star" [color]="v <= starValue ? activeColor : inactiveColor"
+<ion-icon *ngFor="let v of values" [name]="symbol" [color]="v <= starValue ? activeColor : inactiveColor"
           (click)="setStarValue(v)"></ion-icon>

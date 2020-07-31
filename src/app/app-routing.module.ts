@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'liste-concert',
     loadChildren: () => import('./pages/liste-concert/liste-concert.module').then( m => m.ListeConcertPageModule)
+  },
+  {
+    path: 'formulaire-concert',
+    loadChildren: () => import('./pages/formulaire-concert/formulaire-concert.module').then( m => m.FormulaireConcertPageModule)
   }
 ];
 

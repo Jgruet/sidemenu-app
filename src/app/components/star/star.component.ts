@@ -13,6 +13,8 @@ export class StarComponent implements OnInit {
 
     @Input() inactiveColor = 'medium';
 
+    @Input() symbol = 'star';
+
     //Liste des valeurs
     public values: number[] = [];
 
@@ -25,7 +27,7 @@ export class StarComponent implements OnInit {
 
     ngOnInit() {
         // Remplissage de la liste des valeurs
-        for (let i = 1; i < this.max; i++){
+        for (let i = 1; i <= this.max; i++){
             this.values.push(i);
         }
     }

@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>Liste des concerts</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +11,7 @@
     <ion-item *ngFor="let concert of (concertService.concertChange| async)">
       <ion-label>
         <h3>{{ concert.groupe }}</h3>
-        <p>{{ concert.salle }} le {{ concert.date }}</p>
+        <p>{{ concert.salle }} le {{ concert.date | date: 'd/MM/yyyy' }}</p>
       </ion-label>
       <ion-chip slot="end">{{concert.note}}/10</ion-chip>
     </ion-item>
@@ -20,6 +21,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block">Nouveau concert</ion-button>
+    <ion-button expand="block" routerLink="/formulaire-concert">Nouveau concert</ion-button>
   </ion-toolbar>
 </ion-footer>
