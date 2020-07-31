@@ -8,5 +8,15 @@
 </ion-header>
 
 <ion-content>
+  <app-person name="Jonathan" (countClick)="doClick($event)"></app-person>
 
+  <app-person [name]="personName"></app-person>
+
+  <app-person name="Albert qui aime la bière"></app-person>
+
+  <app-person></app-person>
+
+  <p>{{ grade }}</p>
+
+  <app-star max="25" inactiveColor="success" [(starValue)]="grade"></app-star>
 </ion-content>

@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.page.html',
-  styleUrls: ['./settings.page.scss'],
+    selector: 'app-settings',
+    templateUrl: './settings.page.html',
+    styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+    personName = 'Isidore ducasse';
 
-  ngOnInit() {
-  }
+    public grade = 5;
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    doClick(event) {
+        console.log(event);
+    }
+
 
 }

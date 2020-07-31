@@ -26,6 +26,22 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'note-list',
+    loadChildren: () => import('./pages/note-list/note-list.module').then( m => m.NoteListPageModule)
+  },
+  {
+    path: 'note-form',
+    loadChildren: () => import('./pages/note-form/note-form.module').then( m => m.NoteFormPageModule)
+  },
+  {
+    path: 'note-form/:id',
+    loadChildren: () => import('./pages/note-form/note-form.module').then( m => m.NoteFormPageModule)
+  },
+  {
+    path: 'my-map',
+    loadChildren: () => import('./pages/my-map/my-map.module').then( m => m.MyMapPageModule)
   }
 ];
 

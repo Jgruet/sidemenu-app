@@ -22,7 +22,7 @@ export class UserListPage implements OnInit, OnDestroy {
         this.userService.userListNotification.subscribe((data) => this.userList = data);
     }
     getUserList(){
-        this.userService.loadUser(this.search, true);
+        this.userService.loadUser(this.search);
     }
 
     getMoreUsers(event, mode){
