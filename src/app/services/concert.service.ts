@@ -17,9 +17,10 @@ export interface ConcertInterface {
 })
 export class ConcertService {
 
-    public url = 'http://localhost:3000/concerts/?_expand=groupe&_expand=salle';
+    public urlConcert = 'http://localhost:3000/concerts/?_expand=groupe&_expand=salle';
     public urlGroupe = 'http://localhost:3000/groupes/';
     public urlSalle = 'http://localhost:3000/salles/';
+    public url = 'http://localhost:3000/';
 
     public listeConcert: ConcertInterface[];
     public concertChange: Subject<ConcertInterface[]>;
@@ -44,7 +45,7 @@ export class ConcertService {
     }
 
     public chargementConcert() {
-        this.http.get(this.url).subscribe((data: any) => {
+        this.http.get(this.urlConcert).subscribe((data: any) => {
             // on utilise .map pour bosser sur les objets concert et pas sur le tableau d'objet concert
             this.listeConcert = data.map((concert) => {
                 return this.hydrate(concert);
@@ -66,7 +67,7 @@ export class ConcertService {
     }
 
     public insertConcert(concert){
-        this.http.post(this.url, concert).subscribe((data: any) => {
+        this.http.post(this.urlConcert, concert).subscribe((data: any) => {
             this.chargementConcert();
         });
     }
@@ -80,6 +81,12 @@ export class ConcertService {
     public insertSalle(salle){
         this.http.post(this.urlSalle, salle).subscribe( () => {
             this.chargementSalle();
+        });
+    }
+
+    supressionConcert(id: number){
+        this.http.delete(this.url + 'concerts/' + id).subscribe( () => {
+            this.chargementConcert();
         });
     }
 }

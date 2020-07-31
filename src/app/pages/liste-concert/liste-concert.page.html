@@ -8,13 +8,22 @@
 <ion-content class="ion-padding">
 
   <ion-list>
-    <ion-item *ngFor="let concert of (concertService.concertChange| async)">
-      <ion-label>
-        <h3>{{ concert.groupe }}</h3>
-        <p>{{ concert.salle }} le {{ concert.date | date: 'd/MM/yyyy' }}</p>
-      </ion-label>
-      <ion-chip slot="end">{{concert.note}}/10</ion-chip>
-    </ion-item>
+    <ion-item-sliding *ngFor="let concert of (concertService.concertChange| async)">
+      <ion-item>
+        <ion-label>
+          <h3>{{ concert.groupe }}</h3>
+          <p>{{ concert.salle }} le {{ concert.date | date: 'd/MM/yyyy' }}</p>
+        </ion-label>
+        <ion-chip slot="end">{{concert.note}}/10</ion-chip>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon name="trash" slot="icon-only" (click)="concertService.supressionConcert(concert.id)"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 
 </ion-content>
