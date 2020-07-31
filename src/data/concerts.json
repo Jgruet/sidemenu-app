@@ -1,0 +1,48 @@
+{
+  "salles": [
+    {
+      "id": 1,
+      "nom": "Le Bataclan"
+    },
+    {
+      "id": 2,
+      "nom": "La flèche d'or"
+    },
+    {
+      "id": 3,
+      "nom": "L'Olympia"
+    }
+  ],
+
+  "groupes": [
+    {
+      "id": 1,
+      "nom": "Fiddler's green"
+    },
+    {
+      "id": 2,
+      "nom": "Les ramoneurs de Mehnir"
+    },
+    {
+      "id": 3,
+      "nom": "Les négresse vertes"
+    }
+  ],
+
+  "concerts": [
+    {
+      "id": 1,
+      "groupeId": 1,
+      "salleId": 1,
+      "date": "2020-06-10",
+      "note": 8
+    },
+    {
+      "id": 2,
+      "groupeId": 2,
+      "salleId": 2,
+      "date": "2020-07-10",
+      "note": 7
+    }
+  ]
+}
