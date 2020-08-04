@@ -82,4 +82,17 @@ export class BookService {
     public getOneBoookById(id: number){
         return this.bookList.find(item => item.id === id);
     }
+
+    public deleteBook(id: number){
+        this.http.delete(BOOK_URL + id).subscribe(
+            (response: {success: boolean, error?: string}) => {
+                if (response.success){
+                    const index = this.bookList.findIndex(item => item.id === id);
+                    this.bookList.splice(index, 1);
+                } else {
+                    console.log(response.error);
+                }
+            }
+        );
+    }
 }
