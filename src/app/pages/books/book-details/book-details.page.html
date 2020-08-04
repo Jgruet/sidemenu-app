@@ -17,7 +17,7 @@
 
     <ion-card-content>
       <ion-item>
-        <ion-chip slot="end" *ngFor="let category of book.categories">
+        <ion-chip slot="end" *ngFor="let category of book.categories" (click)="search(category)">
           {{ category }}
         </ion-chip>
       </ion-item>

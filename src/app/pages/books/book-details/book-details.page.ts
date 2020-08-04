@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // pour récupérer l'id passé dans l'url
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Book} from '../../../models/book';
 import {BookService} from '../../../services/book.service';
 
@@ -13,12 +13,19 @@ export class BookDetailsPage implements OnInit {
 
   public book: Book;
 
-  constructor(private activeRoute: ActivatedRoute, private bookService: BookService) {
+  constructor(private activeRoute: ActivatedRoute, private bookService: BookService, private router: Router) {
     const id = parseInt(activeRoute.snapshot.paramMap.get('id'), 10);
     this.book = this.bookService.getOneBoookById(id);
   }
 
   ngOnInit() {
+  }
+
+  public search(term){
+    this.bookService.reset();
+    this.bookService.search = term;
+    this.bookService.loadBooks();
+    this.router.navigateByUrl('/book-list');
   }
 
 }
