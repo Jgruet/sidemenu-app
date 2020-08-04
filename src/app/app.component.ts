@@ -44,6 +44,11 @@ export class AppComponent implements OnInit {
             title: 'Liste des concerts',
             url: '/liste-concert',
             icon: 'musical-notes'
+        },
+        {
+            title: 'Statistiques des concerts',
+            url: '/stats',
+            icon: 'stats-chart'
         }
     ];
     public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
