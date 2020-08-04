@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>book-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-thumbnail>
+        <ion-img [src]="book.thumbnailUrl"></ion-img>
+      </ion-thumbnail>
+      <ion-card-title>{{book.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-chip slot="end" *ngFor="let category of book.categories">
+          {{ category }}
+        </ion-chip>
+      </ion-item>
+      <p>{{book.longDescription}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
