@@ -9,7 +9,7 @@
 <ion-content class="ion-padding">
 
   <ion-list>
-    <ion-item-sliding *ngFor="let book of (bookService.bookChanged | async)">
+    <ion-item-sliding *ngFor="let book of (bookService.bookListChanged | async)">
       <ion-item routerLink="/book-details/{{book.id}}">
         <ion-thumbnail slot="start">
           <ion-img [src]="book.thumbnailUrl"></ion-img>

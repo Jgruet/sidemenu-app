@@ -62,6 +62,14 @@ const routes: Routes = [
   {
     path: 'book-details/:id',
     loadChildren: () => import('./pages/books/book-details/book-details.module').then( m => m.BookDetailsPageModule)
+  },
+  {
+    path: 'book-form',
+    loadChildren: () => import('./pages/books/book-form/book-form.module').then( m => m.BookFormPageModule)
+  },
+  {
+    path: 'book-form/:id',
+    loadChildren: () => import('./pages/books/book-form/book-form.module').then( m => m.BookFormPageModule)
   }
 ];
 

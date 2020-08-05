@@ -12,7 +12,9 @@ const BOOK_URL = BASE_URL + 'books/';
 export class BookService {
 
     // initialisation de la variable de notification de changement
-    public bookChanged: Subject<Book[]>;
+    public bookListChanged: Subject<Book[]>;
+
+    public bookChanged: Subject<Book>;
 
     private bookList: Book[] = [];
 
@@ -24,7 +26,8 @@ export class BookService {
 
     // à la construction de la classe on a besoin de httpClient pour requêter et on instancie bookChanged
     constructor(private http: HttpClient) {
-        this.bookChanged = new Subject<Book[]>();
+        this.bookListChanged = new Subject<Book[]>();
+        this.bookChanged = new Subject<Book>();
     }
 
     // loadBooks attend un callback qui est initialisé à null pour le premier chargement de la fonction
@@ -70,7 +73,7 @@ export class BookService {
                 });
 
                 this.bookList = this.bookList.concat(bookList);
-                this.bookChanged.next(this.bookList);
+                this.bookListChanged.next(this.bookList);
 
                 if (callback) {
                     callback();
@@ -91,6 +94,26 @@ export class BookService {
                     this.bookList.splice(index, 1);
                 } else {
                     console.log(response.error);
+                }
+            }
+        );
+    }
+
+    public findOneByIdFromDatabase(id: number){
+        this.http.get(BOOK_URL + id).subscribe((response: any) => {
+            const book = new Book();
+            book.hydrate(response);
+            this.bookChanged.next(book);
+        });
+    }
+// je fais un subscribe et quand j'ai des données j'execute la fonction callback
+    public updateBook(book, callback) {
+        this.http.put(BOOK_URL + book.id, book).subscribe(
+            () => {
+                const index = this.bookList.findIndex( item => item.id === book.id);
+                this.bookList[index] = book;
+                if (callback){
+                    callback();
                 }
             }
         );

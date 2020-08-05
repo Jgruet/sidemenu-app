@@ -9,7 +9,7 @@ export interface BookJson {
         longDescription: string;
         status: string;
         authors: string[];
-        categories: string;
+        categories: string[];
 }
 
 export interface ResponseJson {
@@ -31,7 +31,7 @@ export class Book {
     longDescription: string;
     status: string;
     authors: string[];
-    categories: string;
+    categories: string[] = [];
 
     public hydrate(data: BookJson){
         this.id = data._id;
